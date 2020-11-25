@@ -1,0 +1,291 @@
+$trans: all 0.3s ease-in-out;
+$trp: transparent;
+$yellow: #eeb701;
+$black: #191b17;
+$grey-smoke: #1f1f1f;
+$night-rider: #343434;
+$white-smoke: #f0f0f0;
+
+@mixin font($size, $weight, $color, $lh) {
+    font: {
+        size: $size;
+        weight: $weight;
+    }
+    color: $color;
+    line-height: $lh;
+}
+
+@mixin WL($range, $w, $h: auto) {
+    @if ($range == max) {
+        max-width: $w;
+    } @else if ($range == min) {
+        min-width: $w;
+    } @else {
+        width: $w;
+    }
+
+    height: $h;
+}
+
+@mixin position($type: relative, $top, $left, $right: 0) {
+    position: $type;
+    top: $top;
+    left: $left;
+    right: $right;
+}
+
+@mixin box($m, $p: none, $b: none) {
+    margin: $m;
+    padding: $p;
+    border: $b;
+}
+
+@mixin flex($jc, $ai, $fd: row) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-direction: $fd;
+}
+
+* {
+    font-family: 'Playfair Display', serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    @include font(1rem, 500, $grey-smoke, 1.5);
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: $grey-smoke;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    background-color: $trp;
+    outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include font('', 400, '', 1.25);
+    @include box(0.6rem 0);
+    text-transform: capitalize;
+}
+
+.header {
+    @include flex(stretch, none, column);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('assets/img1.jpg');
+    min-height: 100vh;
+    color: $white-smoke;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    .navbar {
+        @include position(fixed, 0, 0, none);
+        z-index: 999;
+        width: 100%;
+        background: white;
+
+        .container {
+            @include WL(max, 1320px);
+            @include box(0 auto, 0 1rem);
+
+            .brand-and-toggle {
+                @include flex(space-between, center);
+                font-size: 1.65rem;
+                padding: 0.8rem 0;
+
+                .navbar-brand {
+                    @include font('', 500, $night-rider, '');
+
+                    span {
+                        color: $yellow;
+                    }
+                }
+
+                .navbar-toggler {
+                    color: $yellow;
+                    border: none;
+                }
+            }
+        }
+
+        .navbar-collapse {
+            display: none;
+
+            .navbar-nav {
+                margin: 0.2rem 0.6rem;
+
+                .nav-item {
+                    padding: 0.6rem 0;
+
+                    .nav-link {
+                        @include font(0.95rem, 500, '', '');
+                        text-transform: uppercase;
+                        letter-spacing: 1.5px;
+                        opacity: 0.6;
+                        transition: $trans;
+
+                        &:hover {
+                            color: $yellow;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .center {
+        @include flex(center, center);
+    }
+
+    .main-bn {
+        flex: 1;
+        flex-direction: column;
+        text-align: center;
+
+        h1 {
+            font-size: 2.5rem;
+            padding-bottom: 0.4rem;
+        }
+
+        p {
+            color: $white-smoke;
+            font-size: 1.05rem;
+            letter-spacing: 3px;
+        }
+
+        .btns {
+            margin-top: 2.8rem;
+
+            button {
+                @include box('', 0.8rem 2rem, 1px solid white);
+                border-radius: 2rem;
+                text-transform: uppercase;
+            }
+
+            .btn1 {
+                color: white;
+                transition: $trans;
+
+                &:hover {
+                    background-color: $yellow;
+                    border-color: $yellow;
+                }
+            }
+
+            .btn2 {
+                background-color: $white-smoke;
+                color: $grey-smoke;
+                transition: $trans;
+
+                &:hover {
+                    background-color: $trp;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.detail {
+    background: $white-smoke;
+
+    .detail-item {
+        @include box(2rem 0, 3.5rem 1.5rem, none);
+        background-color: white;
+        text-align: center;
+        box-shadow: 0 1px 2px 0 $grey-smoke;
+        border-radius: 4px;
+        transition: $trans;
+    }
+}
+
+@media screen and (min-width: 990px) {
+    .header {
+        .navbar {
+            background: $trp;
+
+            .container {
+                @include flex(space-between, center);
+
+                .brand-and-toggle {
+                    .navbar-toggler {
+                        display: none;
+                    }
+                }
+            }
+
+            .navbar-collapse {
+                display: block;
+
+                .navbar-nav {
+                    display: flex;
+                    margin: 0;
+                    .nav-item {
+                        margin-left: 2rem;
+                        .nav-link {
+                            color: $white-smoke;
+                        }
+                    }
+                }
+            }
+        }
+
+        .main-bn {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .btns {
+                .btn1 {
+                    display: inline-block;
+                    margin-right: 1.7rem;
+                }
+            }
+        }
+
+        .trans-navbar {
+            box-shadow: 0 2px 5px 0 $grey-smoke;
+            background: white;
+
+            .container {
+                .brand-and-toggle {
+                    .nav-brand {
+                        color: $grey-smoke;
+                    }
+                }
+
+                .navbar-collapse {
+                    .navbar-nav {
+                        .nav-item {
+                            .nav-link {
+                                color: $grey-smoke;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
