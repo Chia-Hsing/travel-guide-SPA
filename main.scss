@@ -324,15 +324,16 @@ section {
 }
 
 @media screen and (min-width: 1200px) {
-    // .main-bn {
-    //     h1 {
-    //         width: 70%;
-    //         margin: 0 auto;
-    //     }
-    // }
-
+    .header {
+        .main-bn {
+            h1 {
+                width: 70%;
+                margin: 0 auto;
+            }
+        }
+    }
     .detail {
-        .detail .row {
+        .row {
             grid-template-columns: repeat(3, 1fr);
         }
     }
