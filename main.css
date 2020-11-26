@@ -169,6 +169,12 @@ h6 {
   color: white;
 }
 
+section {
+  margin: none;
+  padding: 6rem 0;
+  border: none;
+}
+
 .detail {
   background: #f0f0f0;
 }
@@ -178,11 +184,41 @@ h6 {
   border: none;
   background-color: white;
   text-align: center;
-  box-shadow: 0 1px 2px 0 #1f1f1f;
+  box-shadow: 0 1px 2px 0 #343434;
   border-radius: 4px;
   transition: all 0.3s ease-in-out;
 }
+.detail .detail-item:hover {
+  box-shadow: 0 20px 20px -2px rgba(210, 210, 210, 0.9);
+  transform: translateY(-5px);
+}
+.detail .detail-item span {
+  font-size: 2rem;
+}
+.detail .detail-item h2 {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #1f1f1f;
+  line-height: none;
+  opacity: 0.8;
+}
+.detail .detail-item .line {
+  width: 45px;
+  height: 2.5px;
+  background-color: #eeb701;
+  margin: 2rem auto;
+}
 
+@media screen and (min-width: 768px) {
+  .detail .row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .detail .row .detail-item {
+    margin: 0;
+  }
+}
 @media screen and (min-width: 990px) {
   .header .navbar {
     background: transparent;
@@ -225,6 +261,11 @@ h6 {
   }
   .header .trans-navbar .container .navbar-collapse .navbar-nav .nav-item .nav-link {
     color: #1f1f1f;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .detail .detail .row {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

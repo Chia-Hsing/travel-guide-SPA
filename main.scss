@@ -208,6 +208,9 @@ h6 {
     }
 }
 
+section {
+    @include box(none, 6rem 0, none);
+}
 .detail {
     background: $white-smoke;
 
@@ -215,9 +218,39 @@ h6 {
         @include box(2rem 0, 3.5rem 1.5rem, none);
         background-color: white;
         text-align: center;
-        box-shadow: 0 1px 2px 0 $grey-smoke;
+        box-shadow: 0 1px 2px 0 $night-rider;
         border-radius: 4px;
         transition: $trans;
+        &:hover {
+            box-shadow: 0 20px 20px -2px rgba(210, 210, 210, 0.9);
+            transform: translateY(-5px);
+        }
+        span {
+            font-size: 2rem;
+        }
+        h2 {
+            @include font(1.4rem, 300, $grey-smoke, none);
+            opacity: 0.8;
+        }
+        .line {
+            @include WL(none, 45px, 2.5px);
+            background-color: $yellow;
+            margin: 2rem auto;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .detail {
+        .row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+
+            .detail-item {
+                margin: 0;
+            }
+        }
     }
 }
 
@@ -286,6 +319,21 @@ h6 {
                     }
                 }
             }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    // .main-bn {
+    //     h1 {
+    //         width: 70%;
+    //         margin: 0 auto;
+    //     }
+    // }
+
+    .detail {
+        .detail .row {
+            grid-template-columns: repeat(3, 1fr);
         }
     }
 }
